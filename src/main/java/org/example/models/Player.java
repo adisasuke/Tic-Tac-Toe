@@ -7,10 +7,10 @@ public class Player {
     private Symbol symbol;
     private PLAYERTYPE playertype;
 
-    public Player(String name, Symbol symbol) {
+    public Player(String name, Symbol symbol, PLAYERTYPE playertype) {
         this.name = name;
         this.symbol = symbol;
-        this.playertype = PLAYERTYPE.PLAYER;
+        this.playertype = playertype;
     }
 
     public Move makeMove(Board board) {

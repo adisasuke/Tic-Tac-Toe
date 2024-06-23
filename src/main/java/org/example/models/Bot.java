@@ -11,8 +11,7 @@ public class Bot extends Player{
     private final BotWinningStrategy botWinningStrategy;
 
     public Bot(String name, Symbol symbol, BOTLEVEL botlevel) {
-        super(name, symbol);
-        this.setPlayertype(PLAYERTYPE.BOT);
+        super(name, symbol,PLAYERTYPE.BOT);
         botWinningStrategy = BotFactory.createBotWinningStrategy(botlevel);
     }
 

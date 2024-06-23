@@ -23,7 +23,7 @@ public class Main {
 
         Symbol s1 = new Symbol('X');
         Symbol s2 = new Symbol('O');
-        Player p1 = new Player("Adi",s1);
+        Player p1 = new Player("Adi",s1,PLAYERTYPE.PLAYER);
         Player p2 = new Bot("Kim",s2, BOTLEVEL.EASY);
         List<Player> players = new ArrayList<>();
         players.add(p1);

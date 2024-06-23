@@ -182,7 +182,17 @@ public class Game {
         }
 
         moves.add(mv);
-        checkWinning();
+
+        if(checkWinning())
+        {
+            gamestatus = GAMESTATUS.COMPLETED;
+        }
+        else if(moves.size() == board.getDimension()*board.getDimension())
+        {
+            gamestatus = GAMESTATUS.DRAW;
+            System.out.println("Game DRAW");
+        }
+
         board.print();
         nextPlayerIndex++;
         nextPlayerIndex %= players.size();
@@ -203,7 +213,6 @@ public class Game {
             {
                 winner = board.getCells().get(row).get(col).getPlayer();
                 System.out.println("Player "+winner.getName()+" won");
-                gamestatus = GAMESTATUS.COMPLETED;
                 return true;
             }
 
