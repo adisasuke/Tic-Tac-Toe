@@ -6,6 +6,7 @@ import org.example.exception.InvalidBotCount;
 import org.example.exception.InvalidRowAndColumn;
 import org.example.models.*;
 import org.example.strategies.ColWinningStrategy;
+import org.example.strategies.DiagWinningStrategy;
 import org.example.strategies.RowWinningStrategy;
 import org.example.strategies.WinningStrategy;
 
@@ -32,6 +33,7 @@ public class Main {
         List<WinningStrategy> strategies = new ArrayList<>();
         strategies.add(new RowWinningStrategy(dimension));
         strategies.add(new ColWinningStrategy(dimension));
+        strategies.add(new DiagWinningStrategy(dimension));
 
 
         GameContoller gameContoller = new GameContoller();
