@@ -17,8 +17,6 @@ import java.util.Scanner;
 public class GameContoller {
 
 
-
-
     public Game startGame(int dimension, List<Player> players, List<WinningStrategy> strategies)
     {
 
@@ -27,12 +25,27 @@ public class GameContoller {
     }
 
 
-
     public void makeMove(Game game)
     {
         game.makeMove();
     }
 
 
+    public GAMESTATUS checkState(Game game) {
+        return game.getGamestatus();
+    }
+
+    public Player getWinner(Game game) {
+        return game.getWinner();
+    }
+
+    public void printBoard(Game game) {
+        game.printBoard();
+    }
+
+    public void undo(Game game) {
+        game.undo();
+        printBoard(game);
+    }
 
 }

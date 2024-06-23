@@ -38,4 +38,9 @@ public class RowWinningStrategy implements WinningStrategy{
         int sz = mp.get(row).get(symbol);
         return mp.get(row).get(symbol) == dimension;
     }
+
+    @Override
+    public void undo(int row,int column, Symbol symbol) {
+        mp.get(row).put(symbol, mp.get(row).getOrDefault(symbol,0) - 1);
+    }
 }

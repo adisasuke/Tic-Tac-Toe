@@ -13,4 +13,9 @@ public class DiagWinningStrategy implements WinningStrategy{
     public boolean checkWinner(int row, int col, Symbol symbol) {
         return false;
     }
+
+    @Override
+    public void undo(int row, int column, Symbol symbol) {
+
+    }
 }

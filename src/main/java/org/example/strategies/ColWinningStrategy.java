@@ -32,4 +32,9 @@ public class ColWinningStrategy implements WinningStrategy{
     {
         return mp.get(col).get(symbol) == dimension;
     }
+
+    public void undo(int row, int col, Symbol symbol)
+    {
+     mp.get(col).put(symbol, mp.get(col).getOrDefault(symbol,0) - 1);
+    }
 }

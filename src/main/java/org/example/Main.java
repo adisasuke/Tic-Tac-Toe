@@ -8,8 +8,8 @@ import org.example.strategies.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-//int dimension, List<Player> players, java.util.List<WinningStrategy> winningStrategies
 
 public class Main {
     public static void main(String[] args) {
@@ -36,6 +36,16 @@ public class Main {
 
         while(game.getGamestatus() == GAMESTATUS.INPROGRESS)
         {
+            System.out.println("Do you want to undo? (Y/N)");
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            if(input.equalsIgnoreCase("Y"))
+            {
+                game.undo();
+                game.printBoard();
+                continue;
+            }
+
             game.makeMove();
         }
 

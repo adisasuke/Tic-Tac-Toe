@@ -34,6 +34,31 @@ public class Game {
         board.print();
     }
 
+    public void undo() {
+
+        if(moves.size() == 0) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+
+        Move m = moves.get(moves.size() - 1);
+        moves.remove(moves.size() - 1);
+        Cell cell = board.getCells().get(m.getRow()).get(m.getColumn());
+
+
+        int row = cell.getRow();
+        int col = cell.getCol();
+        Symbol symbol = cell.getPlayer().getSymbol();
+        for(WinningStrategy strategy : winningStrategies) {
+            strategy.undo(row, col, symbol);
+        }
+
+        cell.setCelltype(CELLTYPE.EMPTY);
+        cell.setPlayer(null);
+        nextPlayerIndex = (nextPlayerIndex -1 + players.size())%players.size();
+    }
+
+
     public static class Builder
     {
         int dimension;
@@ -173,6 +198,14 @@ public class Game {
         this.winningStrategies = winningStrategies;
     }
 
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
     public List<Move> getMoves() {
         return moves;
     }
@@ -199,6 +232,10 @@ public class Game {
 
     public GAMESTATUS getGamestatus() {
         return gamestatus;
+    }
+
+    public void printBoard() {
+        board.print();
     }
 
     public void setGamestatus(GAMESTATUS gamestatus) {

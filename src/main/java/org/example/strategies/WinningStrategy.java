@@ -6,4 +6,6 @@ import org.example.models.Symbol;
 public interface WinningStrategy {
     void update(int row, int col, Symbol symbol);
     boolean checkWinner(int row, int col, Symbol symbol);
+
+    void undo(int row,int column, Symbol symbol);
 }
