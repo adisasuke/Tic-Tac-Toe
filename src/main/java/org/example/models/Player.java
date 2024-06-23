@@ -13,7 +13,7 @@ public class Player {
         this.playertype = PLAYERTYPE.PLAYER;
     }
 
-    public Move makeMove() {
+    public Move makeMove(Board board) {
         int row;
         int col;
         Scanner scanner = new Scanner(System.in);

@@ -31,7 +31,7 @@ public class Game {
         Symbol s = new Symbol('X');
         Symbol o = new Symbol('O');
         Player p1 = new Player("Adi",s);
-        Player p2 = new Player("Kim",o);
+        Player p2 = new Bot("Kim",o,BOTLEVEL.EASY);
         players.add(p1);
         players.add(p2);
         WinningStrategy w1 = new ColWinningStrategy(dimension);
@@ -79,7 +79,7 @@ public class Game {
 
 
 
-        Move mv = p.makeMove();
+        Move mv = p.makeMove(board);
 
         int row = mv.getRow();
         int col = mv.getColumn();
