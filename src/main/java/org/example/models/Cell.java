@@ -28,6 +28,19 @@ public class Cell {
         return col;
     }
 
+    public void print()
+    {
+        if(getCelltype() == CELLTYPE.EMPTY)
+        {
+            System.out.print(" | _ | ");
+        }
+        else
+        {
+            Symbol s = getPlayer().getSymbol();
+            System.out.print(" | "  + s.getSymbol() + " | ");
+        }
+    }
+
     public void setCol(int col) {
         this.col = col;
     }

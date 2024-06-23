@@ -30,15 +30,7 @@ public class Board {
             for(int j=0;j<dimension;j++)
             {
                 Cell cell = cells.get(i).get(j);
-                if(cell.getCelltype() == CELLTYPE.EMPTY)
-                {
-                    System.out.print("_" + " ");
-                }
-                else
-                {
-                    Symbol s = cells.get(i).get(j).getPlayer().getSymbol();
-                    System.out.print(s.getSymbol() + " ");
-                }
+                cell.print();
             }
             System.out.println();
         }
