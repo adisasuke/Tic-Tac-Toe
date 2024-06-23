@@ -19,10 +19,10 @@ public class GameContoller {
 
 
     //Todo : Take dimension players and strategy list all in this function only
-    public Game startGame()
+    public Game startGame(int dimension, List<Player> players, List<WinningStrategy> strategies)
     {
 
-        return new Game();
+        return new Game(dimension, players, strategies);
 
     }
 

@@ -18,18 +18,6 @@ public class RowWinningStrategy implements WinningStrategy{
         mp = new HashMap<>();
     }
 
-//    public void update(int row, int col, Symbol symbol) {
-//        // If the row does not exist in the map, initialize it
-//        if (!mp.containsKey(row)) {
-//            mp.put(row, new HashMap<>());
-//        }
-//
-//        // Get the map for the current row
-//        HashMap<Symbol, Integer> rowMap = mp.get(row);
-//
-//        // Update the count for the symbol
-//        rowMap.put(symbol, rowMap.getOrDefault(symbol, 0) + 1);
-//    }
 
     public void update(int row, int col, Symbol symbol)
     {

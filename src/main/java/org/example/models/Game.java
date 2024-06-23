@@ -21,26 +21,10 @@ public class Game {
     private List<WinningStrategy> winningStrategies;
 
     //Todo : Take dimension and initiate board
-    public Game() {
+    public Game(int dimension, List<Player> players, List<WinningStrategy> winningStrategies) {
 
-        int dimension = 3;
-        List<Player> players = new ArrayList<>();
-        List<WinningStrategy> winningStrategies = new ArrayList<>();
+
         gamestatus = GAMESTATUS.INPROGRESS;
-
-        Symbol s = new Symbol('X');
-        Symbol o = new Symbol('O');
-        Player p1 = new Player("Adi",s);
-        Player p2 = new Bot("Kim",o,BOTLEVEL.EASY);
-        players.add(p1);
-        players.add(p2);
-        WinningStrategy w1 = new ColWinningStrategy(dimension);
-        WinningStrategy w2 = new RowWinningStrategy(dimension);
-//        WinningStrategy w3 = new DiagWinningStrategy();
-        winningStrategies.add(w1);
-        winningStrategies.add(w2);
-//        winningStrategies.add(w3);
-
 
         this.players = players;
         this.board = new Board(dimension);
