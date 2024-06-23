@@ -18,16 +18,16 @@ public class GameContoller {
 
 
 
-    //Todo : Take dimension players and strategy list all in this function only
+
     public Game startGame(int dimension, List<Player> players, List<WinningStrategy> strategies)
     {
 
-        return new Game(dimension, players, strategies);
+        return Game.getBuilder().setDimension(dimension).setPlayers(players).setWinningStrategies(strategies).build();
 
     }
 
 
-    //Todo : take input and validate input and then pass to the game
+
     public void makeMove(Game game)
     {
         game.makeMove();

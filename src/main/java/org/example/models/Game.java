@@ -8,6 +8,7 @@ import org.example.strategies.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Game {
@@ -21,8 +22,7 @@ public class Game {
     private List<WinningStrategy> winningStrategies;
 
     //Todo : Take dimension and initiate board
-    public Game(int dimension, List<Player> players, List<WinningStrategy> winningStrategies) {
-
+    private Game(int dimension, List<Player> players, List<WinningStrategy> winningStrategies) {
 
         gamestatus = GAMESTATUS.INPROGRESS;
 
@@ -32,6 +32,50 @@ public class Game {
         this.nextPlayerIndex = 0;
         this.moves = new ArrayList<>();
         board.print();
+    }
+
+    public static class Builder
+    {
+        int dimension;
+        List<Player> players;
+        List<WinningStrategy> winningStrategies;
+
+        public List<WinningStrategy> getWinningStrategies() {
+            return winningStrategies;
+        }
+
+        public Builder setWinningStrategies(List<WinningStrategy> winningStrategies) {
+            this.winningStrategies = winningStrategies;
+            return this;
+        }
+
+        public List<Player> getPlayers() {
+            return players;
+        }
+
+        public Builder setPlayers(List<Player> players) {
+            this.players = players;
+            return this;
+        }
+
+        public int getDimension() {
+            return dimension;
+        }
+
+        public Builder setDimension(int dimension) {
+            this.dimension = dimension;
+            return this;
+        }
+
+        public Game build() {
+            return new Game(dimension, players, winningStrategies);
+        }
+
+    }
+
+    public static Builder getBuilder()
+    {
+        return new Builder();
     }
 
     private boolean validate(int x,int y)
