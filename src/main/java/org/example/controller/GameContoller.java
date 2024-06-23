@@ -1,5 +1,8 @@
 package org.example.controller;
 
+import org.example.exception.DuplicateSymbolException;
+import org.example.exception.InvalidBotCount;
+import org.example.exception.InvalidRowAndColumn;
 import org.example.models.GAMESTATUS;
 import org.example.models.Game;
 import org.example.models.Player;
@@ -17,16 +20,14 @@ import java.util.Scanner;
 public class GameContoller {
 
 
-    public Game startGame(int dimension, List<Player> players, List<WinningStrategy> strategies)
-    {
+    public Game startGame(int dimension, List<Player> players, List<WinningStrategy> strategies) throws InvalidBotCount, DuplicateSymbolException {
 
         return Game.getBuilder().setDimension(dimension).setPlayers(players).setWinningStrategies(strategies).build();
 
     }
 
 
-    public void makeMove(Game game)
-    {
+    public void makeMove(Game game) throws InvalidRowAndColumn {
         game.makeMove();
     }
 

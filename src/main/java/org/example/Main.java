@@ -1,6 +1,9 @@
 package org.example;
 
 import org.example.controller.GameContoller;
+import org.example.exception.DuplicateSymbolException;
+import org.example.exception.InvalidBotCount;
+import org.example.exception.InvalidRowAndColumn;
 import org.example.models.*;
 import org.example.strategies.ColWinningStrategy;
 import org.example.strategies.RowWinningStrategy;
@@ -12,7 +15,7 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidBotCount, InvalidRowAndColumn, DuplicateSymbolException {
         System.out.println("Tic Tac Toe");
         System.out.println("**********************************************************");
 

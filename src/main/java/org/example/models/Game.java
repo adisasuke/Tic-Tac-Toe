@@ -1,15 +1,15 @@
 package org.example.models;
 
+import org.example.exception.DuplicateSymbolException;
+import org.example.exception.InvalidBotCount;
 import org.example.exception.InvalidRowAndColumn;
+import org.example.exception.InvalidSymbol;
 import org.example.strategies.ColWinningStrategy;
 import org.example.strategies.DiagWinningStrategy;
 import org.example.strategies.RowWinningStrategy;
 import org.example.strategies.WinningStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
 
@@ -92,7 +92,36 @@ public class Game {
             return this;
         }
 
-        public Game build() {
+        public void validateBotCount() throws InvalidBotCount {
+            int count=0;
+            for(Player player : players) {
+                if(player.getPlayertype() == PLAYERTYPE.BOT)
+                {
+                    count++;
+                }
+            }
+            if(count>1)
+                throw new InvalidBotCount();
+        }
+
+        public void validateUniqueSymbolForPlayer() throws DuplicateSymbolException {
+            Map<Character, Integer> count = new HashMap<>();
+            for(Player player: players) {
+                Character symbol = player.getSymbol().getSymbol();//first returns symbol and second one return char
+
+                count.put(symbol, count.getOrDefault(symbol, 0) + 1);
+                if(count.get(symbol) > 1) {
+                    throw new DuplicateSymbolException();
+                }
+            }
+        }
+        public void validate() throws InvalidBotCount, DuplicateSymbolException {
+            validateBotCount();
+            validateUniqueSymbolForPlayer();
+        }
+
+        public Game build() throws InvalidBotCount, DuplicateSymbolException {
+            validate();
             return new Game(dimension, players, winningStrategies);
         }
 
@@ -116,7 +145,7 @@ public class Game {
         return true;
     }
 
-    public void makeMove() {
+    public void makeMove() throws InvalidRowAndColumn {
 
         if(gamestatus == GAMESTATUS.COMPLETED)
         {
